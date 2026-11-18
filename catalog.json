@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "library": "KonAI",
+  "updated": "2026-11-18",
+  "format": "agent-skills",
+  "spec": "https://agentskills.io/specification",
+  "skills": [
+    {
+      "id": "architecture-planning",
+      "name": "architecture-planning",
+      "description": "Use before implementing a non-trivial feature or refactor, when choosing between technical approaches, or when deciding how much design is enough. Produces the smallest maintainable plan, with reuse of existing components, named risks, and testable acceptance criteria.",
+      "category": "architecture",
+      "path": "skills/architecture-planning",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "design-decision",
+        "option-comparison",
+        "risk-analysis",
+        "acceptance-criteria"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "code-review",
+      "name": "code-review",
+      "description": "Use when reviewing a diff, pull request, commit, or proposed change before merge, or when self-reviewing your own work. Reports evidence-backed findings ordered by severity, separating real defects from style preferences.",
+      "category": "review",
+      "path": "skills/code-review",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "diff-review",
+        "pull-request-review",
+        "security-review",
+        "regression-analysis"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "konai-core",
+      "name": "konai-core",
+      "description": "Entry point to the KonAI skill library. Use when you need to find which KonAI skill applies to a task, explain how skills are structured and loaded, avoid loading the whole library, or reuse a skill from another project. Routes to the right skill instead of repeating it.",
+      "category": "meta",
+      "path": "skills/konai-core",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "skill-discovery",
+        "skill-activation",
+        "progressive-disclosure",
+        "library-navigation"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "project-discovery",
+      "name": "project-discovery",
+      "description": "Use when starting work in an unfamiliar repository or an unread subsystem, before changing anything. Builds a compact, evidence-backed project profile — stack, entry points, build and test commands, conventions, and risks — with targeted probes instead of reading everything.",
+      "category": "discovery",
+      "path": "skills/project-discovery",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "repository-profiling",
+        "stack-detection",
+        "build-command-discovery",
+        "convention-discovery"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "quality-first",
+      "name": "quality-first",
+      "description": "Use before modifying, creating, or deleting code, configuration, or documentation, and before reporting any result. Enforces correctness over volume, minimal justified changes, reuse of existing implementations, and evidence-based reporting instead of claimed success.",
+      "category": "quality",
+      "path": "skills/quality-first",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "code-change",
+        "pre-change-review",
+        "minimal-change",
+        "evidence-based-reporting"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "root-cause-debugging",
+      "name": "root-cause-debugging",
+      "description": "Use when something fails and the cause is unknown — build or compile error, failing test, crash, wrong output, hang, or flaky behavior. Forces evidence-based diagnosis, keeps a failure log, forbids repeating a failed approach, and caps attempts before escalating.",
+      "category": "debugging",
+      "path": "skills/root-cause-debugging",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "failure-diagnosis",
+        "error-interpretation",
+        "failure-tracking",
+        "regression-isolation"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "testing-and-verification",
+      "name": "testing-and-verification",
+      "description": "Use before reporting any change as complete or fixed, when choosing which tests to run, or when interpreting build and test output. Enforces real evidence, correct interpretation of exit codes and skips, and an explicit success/partial/unverified/failed classification.",
+      "category": "testing",
+      "path": "skills/testing-and-verification",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "test-selection",
+        "result-interpretation",
+        "completion-evidence",
+        "regression-testing"
+      ],
+      "technologies": []
+    },
+    {
+      "id": "token-efficient",
+      "name": "token-efficient",
+      "description": "Use when the repository or context is large, a task touches many files, responses are getting verbose, tool calls are repeating, or a context budget is limited. Cuts retrieval and reporting waste without skipping investigation, testing, or security review.",
+      "category": "efficiency",
+      "path": "skills/token-efficient",
+      "version": "1.0.0",
+      "status": "stable",
+      "task_types": [
+        "context-management",
+        "retrieval-strategy",
+        "handoff-discipline",
+        "report-conciseness"
+      ],
+      "technologies": []
+    }
+  ]
+}

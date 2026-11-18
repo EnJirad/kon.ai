@@ -1,0 +1,13 @@
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Python tooling (scripts/validate.py is stdlib-only; these appear if it is imported)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local validation scratch
+.konai-cache/
