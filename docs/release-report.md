@@ -70,7 +70,7 @@ Links inside fenced code blocks are correctly ignored.
 | **F. Token efficiency** | PASS (measured) | Full bodies cost 6.8× the catalog, so discovery without loading is materially cheaper; ratio is a property of the design, not an estimate |
 | **G. Quality review** | PASS | 0 identical substantive lines shared between skills; all cross-references resolve; every skill has a trigger, procedure, stop conditions, and related-skill pointers |
 | **H. Security** | PASS | 0 executables and 0 script or asset directories inside skills; all skill files are `.md`; secret-pattern scan clean; no auto-run mechanism exists |
-| **I. Installation** | PASS (local), PARTIAL (remote) | Copied into five simulated agent directories (`.claude`, `.agents`, `.opencode`, `.github`, user-scope) — each validated; symlinked install validated. Remote clone and sparse checkout verified after the first push |
+| **I. Installation** | PASS | Copied into five simulated agent directories (`.claude`, `.agents`, `.opencode`, `.github`, user-scope) — each validated; symlinked install validated. From the public remote: full clone passed library validation, two-skill sparse checkout fetched only those skills and both validated, single-skill copy install validated |
 | **J. Maintenance** | PASS | Adding a skill without a catalog entry fails validation with a specific error; adding the entry passes; the eight existing skill files are byte-identical before and after |
 
 ## Compatibility
@@ -85,6 +85,32 @@ Verified against vendor documentation on 2026-11-18:
   `~/.copilot/skills/`.
 
 Details with sources: [installation.md](installation.md).
+
+## Remote distribution evidence
+
+Run against `https://github.com/EnJirad/kon.ai` at commit `7a1701b`:
+
+```
+$ git ls-remote --heads origin
+7a1701b4...  refs/heads/main
+
+$ git clone --depth 1 .../kon.ai.git && cd kon.ai && python3 scripts/validate.py
+8 skill(s) checked | 0 error(s) | 0 warning(s)
+
+$ cp -r kon.ai/skills/root-cause-debugging ~/.agents/skills/
+$ skills-ref validate ~/.agents/skills/root-cause-debugging
+Valid skill: .../root-cause-debugging
+
+$ git clone --depth 1 --filter=blob:none --sparse .../kon.ai.git
+$ git sparse-checkout set skills/root-cause-debugging skills/testing-and-verification
+$ skills-ref validate skills/root-cause-debugging
+$ skills-ref validate skills/testing-and-verification
+Valid skill: skills/root-cause-debugging
+Valid skill: skills/testing-and-verification
+```
+
+Sparse checkout retrieves only the selected skill directories, confirming a user
+can adopt one skill without the full library.
 
 ## Known limitations
 
